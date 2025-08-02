@@ -25,4 +25,5 @@ export interface ValidationError {
 export interface FormStep {
   title: string
   fields: FormField[]
+  id: string
 }

@@ -1,13 +1,10 @@
 "use client"
 
-import { ThemeProvider } from "../contexts/ThemeContext"
-import { KYCForm } from "../components/KYCForm"
+import { KYCFormSetup } from "@/components/KYCFormSetup"
 import "../styles/form.css"
 
 export default function Home() {
   return (
-    <ThemeProvider>
-      <KYCForm />
-    </ThemeProvider>
+    <KYCFormSetup />
   )
 }

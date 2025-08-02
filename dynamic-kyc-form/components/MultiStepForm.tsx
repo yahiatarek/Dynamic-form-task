@@ -1,5 +1,6 @@
 "use client"
 
+import { useFormStore } from "@/stores/useFormStore"
 import type React from "react"
 import { useEffect, useState } from "react"
 import { useTheme } from "../contexts/ThemeContext"
@@ -18,10 +19,10 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({ steps, onSubmit })
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { theme, toggleTheme } = useTheme()
+  const { formResponses, clearFormResponses, setFormResponses } = useFormStore()
 
-  // Load saved responses from localStorage
   useEffect(() => {
-    const savedResponses = localStorage.getItem("kyc-form-responses")
+    const savedResponses = JSON.stringify(formResponses)
     if (savedResponses) {
       try {
         setResponses(JSON.parse(savedResponses))
@@ -31,9 +32,8 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({ steps, onSubmit })
     }
   }, [])
 
-  // Save responses to localStorage whenever they change
   useEffect(() => {
-    localStorage.setItem("kyc-form-responses", JSON.stringify(responses))
+    setFormResponses(responses)
   }, [responses])
 
   const handleFieldChange = (fieldId: string, value: any) => {
@@ -75,7 +75,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({ steps, onSubmit })
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
       // Clear saved responses after successful submission
-      localStorage.removeItem("kyc-form-responses")
+      clearFormResponses()
 
       onSubmit(responses)
     } catch (error) {

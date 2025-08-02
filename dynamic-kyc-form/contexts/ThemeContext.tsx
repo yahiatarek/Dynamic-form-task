@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { createContext, useContext, useEffect, useState } from "react"
+import { createContext, useContext, useEffect, useMemo, useState } from "react"
 
 type Theme = "light" | "dark"
 
@@ -31,7 +31,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     setTheme((prev) => (prev === "light" ? "dark" : "light"))
   }
 
-  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>
+  return useMemo(() => <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>, [theme, toggleTheme])
 }
 
 export const useTheme = () => {
