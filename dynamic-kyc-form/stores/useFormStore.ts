@@ -95,15 +95,15 @@ export const useFormStore = create<FormStore>()(
         (set) => ({
             // Initial state
             formSteps: initFormSteps,
-            formResponses: null,
+            formResponses: {},
 
             // Actions
             setFormSteps: (steps) => set({ formSteps: steps }),
-            clearFormSteps: () => set({ formSteps: [] }),
+            clearFormSteps: () => set({ formSteps: initFormSteps }),
             removeStep: (stepId) => set((state) => ({ formSteps: state.formSteps.filter((step) => step.id !== stepId) })),
 
             setFormResponses: (responses) => set({ formResponses: responses }),
-            clearFormResponses: () => set({ formResponses: null }),
+            clearFormResponses: () => set({ formResponses: {} }),
         }),
         {
             name: 'form-storage',

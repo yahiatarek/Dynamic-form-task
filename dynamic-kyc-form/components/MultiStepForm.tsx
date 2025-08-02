@@ -1,7 +1,6 @@
 "use client"
 
 import { useFormStore } from "@/stores/useFormStore"
-import { useRouter } from "next/navigation"
 import type React from "react"
 import { useEffect, useState } from "react"
 import { useTheme } from "../contexts/ThemeContext"
@@ -64,8 +63,6 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({ steps, onSubmit })
     setCurrentStep((prev) => Math.max(prev - 1, 0))
   }
 
-  const router = useRouter()
-
   const handleSubmit = async () => {
     if (!validateCurrentStep()) {
       return
@@ -77,14 +74,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({ steps, onSubmit })
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      // Clear saved responses after successful submission
-      clearFormResponses()
-
-      clearFormSteps()
-
       onSubmit(responses)
-
-      router.push("/")
     } catch (error) {
       console.error("Submission failed:", error)
     } finally {
