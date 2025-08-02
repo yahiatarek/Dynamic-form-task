@@ -6,7 +6,8 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "install:ci": "npm install --legacy-peer-deps --no-audit --no-package-lock --no-save"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
