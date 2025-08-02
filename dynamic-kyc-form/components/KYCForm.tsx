@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState } from "react"
-import type { FormStep, FormResponse } from "../types/form"
+import type { FormResponse, FormStep } from "../types/form"
 import { MultiStepForm } from "./MultiStepForm"
 
 // Sample form configuration
@@ -27,7 +27,7 @@ const formSteps: FormStep[] = [
         id: "gender",
         label: "Gender",
         type: "radio_buttons",
-        options: ["Male", "Female", "Other"],
+        options: ["Male", "Female"],
         required: true,
       },
     ],
@@ -87,12 +87,9 @@ export const KYCForm: React.FC = () => {
   const [submittedData, setSubmittedData] = useState<FormResponse | null>(null)
 
   const handleSubmit = (responses: FormResponse) => {
-    console.log("Form submitted with responses:", responses)
+    console.log("responses", responses)
     setSubmittedData(responses)
     setIsSubmitted(true)
-
-    // Here you would typically send to your API
-    // mockApiSubmission(responses);
   }
 
   const handleStartOver = () => {
@@ -110,10 +107,10 @@ export const KYCForm: React.FC = () => {
             Thank you for completing the KYC form. Your information has been received and will be processed shortly.
           </p>
 
-          <details className="success-message__details">
-            <summary>View Submitted Data</summary>
+          <div className="success-message__details">
+            <div>Submitted Data</div>
             <pre className="success-message__data">{JSON.stringify(submittedData, null, 2)}</pre>
-          </details>
+          </div>
 
           <button onClick={handleStartOver} className="btn btn--secondary">
             Start Over

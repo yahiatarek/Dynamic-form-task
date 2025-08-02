@@ -1,11 +1,11 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect } from "react"
-import type { FormStep, FormResponse } from "../types/form"
+import { useEffect, useState } from "react"
+import { useTheme } from "../contexts/ThemeContext"
+import type { FormResponse, FormStep } from "../types/form"
 import { validateForm } from "../utils/validation"
 import { FormRenderer } from "./FormRenderer"
-import { useTheme } from "../contexts/ThemeContext"
 
 interface MultiStepFormProps {
   steps: FormStep[]
@@ -38,15 +38,6 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({ steps, onSubmit })
 
   const handleFieldChange = (fieldId: string, value: any) => {
     setResponses((prev) => ({ ...prev, [fieldId]: value }))
-
-    // Clear error for this field when user starts typing
-    if (errors[fieldId]) {
-      setErrors((prev) => {
-        const newErrors = { ...prev }
-        delete newErrors[fieldId]
-        return newErrors
-      })
-    }
   }
 
   const validateCurrentStep = (): boolean => {
@@ -102,11 +93,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({ steps, onSubmit })
     <div className="multi-step-form">
       <div className="multi-step-form__header">
         <div className="multi-step-form__theme-toggle">
-          <button
-            onClick={toggleTheme}
-            className="theme-toggle"
-            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-          >
+          <button onClick={toggleTheme} className="theme-toggle">
             {theme === "light" ? "🌙" : "☀️"}
           </button>
         </div>
