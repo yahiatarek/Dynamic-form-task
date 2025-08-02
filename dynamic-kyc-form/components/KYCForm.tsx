@@ -71,13 +71,7 @@ const formSteps: FormStep[] = [
         label: "Tell us about yourself",
         type: "textarea",
         placeholder: "Share a brief description about yourself...",
-      },
-      {
-        id: "id_document",
-        label: "Identity Document",
-        type: "file",
-        required: true,
-      },
+      }
     ],
   },
 ]

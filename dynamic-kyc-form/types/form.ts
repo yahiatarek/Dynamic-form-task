@@ -1,7 +1,7 @@
 export interface FormField {
   id: string
   label: string
-  type: "text" | "textarea" | "radio_buttons" | "multi_choice" | "drop_down" | "date" | "file"
+  type: "text" | "textarea" | "radio_buttons" | "multi_choice" | "drop_down" | "date"
   required?: boolean
   options?: string[]
   min?: number
@@ -14,7 +14,7 @@ export interface FormField {
 }
 
 export interface FormResponse {
-  [key: string]: string | string[] | File | null
+  [key: string]: string | string[] | null
 }
 
 export interface ValidationError {

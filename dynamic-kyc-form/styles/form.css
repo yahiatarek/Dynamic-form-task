@@ -332,34 +332,6 @@ body {
   font-weight: 500;
 }
 
-/* File input styles */
-.form-field__file {
-  padding: var(--spacing-md);
-  border: 2px dashed var(--color-border);
-  border-radius: var(--border-radius);
-  background-color: var(--color-bg-secondary);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.form-field__file:hover {
-  border-color: var(--color-primary);
-  background-color: var(--color-bg-tertiary);
-}
-
-.form-field__file--error {
-  border-color: var(--color-border-error);
-}
-
-.form-field__file-info {
-  margin-top: var(--spacing-sm);
-  padding: var(--spacing-sm);
-  background-color: var(--color-bg-secondary);
-  border-radius: var(--border-radius-sm);
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
-}
-
 /* Button styles */
 .btn {
   padding: var(--spacing-md) var(--spacing-xl);

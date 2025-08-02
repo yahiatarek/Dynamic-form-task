@@ -2,13 +2,12 @@
 
 import type React from "react"
 import type { FormField, FormResponse } from "../types/form"
-import { TextField } from "./FormFields/TextField"
-import { TextAreaField } from "./FormFields/TextAreaField"
-import { RadioField } from "./FormFields/RadioField"
-import { MultiChoiceField } from "./FormFields/MultiChoiceField"
-import { DropdownField } from "./FormFields/DropdownField"
 import { DateField } from "./FormFields/DateField"
-import { FileField } from "./FormFields/FileField"
+import { DropdownField } from "./FormFields/DropdownField"
+import { MultiChoiceField } from "./FormFields/MultiChoiceField"
+import { RadioField } from "./FormFields/RadioField"
+import { TextAreaField } from "./FormFields/TextAreaField"
+import { TextField } from "./FormFields/TextField"
 
 interface FormRendererProps {
   fields: FormField[]
@@ -43,9 +42,6 @@ export const FormRenderer: React.FC<FormRendererProps> = ({ fields, responses, e
 
       case "date":
         return <DateField {...commonProps} value={responses[field.id] as string} />
-
-      case "file":
-        return <FileField {...commonProps} value={responses[field.id] as File} />
 
       default:
         return null

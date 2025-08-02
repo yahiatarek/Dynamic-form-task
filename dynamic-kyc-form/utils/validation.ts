@@ -39,13 +39,7 @@ export const validateField = (field: FormField, value: any): string | null => {
       }
       break
 
-    case "file":
-      if (value instanceof File) {
-        // File size validation (5MB limit)
-        if (value.size > 5 * 1024 * 1024) {
-          return "File size must be less than 5MB"
-        }
-      }
+    default:
       break
   }
 
